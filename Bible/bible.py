@@ -1108,7 +1108,7 @@ def select_chapter_and_verse(c):
 	can.delete("all")
 
 
-	can.create_image(wd-20-30,10,image=back,anchor="nw")
+	can.create_image(wd-5-30,5,image=back,anchor="nw")
 
 	y=((ht-60)-167)/2
 
