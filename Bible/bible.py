@@ -146,6 +146,8 @@ def b1(e):
 	global book,chapter,verse,can2,yscroll,_book
 	global can,can2
 
+	global ar_var2,ar_var3
+
 
 	if state==1:
 
@@ -373,7 +375,7 @@ def b1(e):
 	elif state==2:
 		
 
-		cx,cy=wd-20-30+15,10+15
+		cx,cy=wd-5-30+15,5+15
 
 		r=math.sqrt((cx-e.x)**2+(cy-e.y)**2)
 
@@ -400,6 +402,10 @@ def b1(e):
 
 			can.focus_set()
 
+
+			ar_var2=[]
+			ar_var3=[]
+
 			select_chapter_and_verse(0)
 			return
 
@@ -414,6 +420,9 @@ def b1(e):
 			o_or_n=0
 			can.focus_set()
 
+
+			ar_var2=[]
+			ar_var3=[]
 			select_chapter_and_verse(0)
 			return
 
@@ -423,6 +432,10 @@ def b1(e):
 			if y<=e.y<=y+40:
 				o_or_n=0
 				can.focus_set()
+
+				ar_var2=[]
+				ar_var3=[]
+
 				select_chapter_and_verse(0)
 				return
 
@@ -472,7 +485,7 @@ def b1(e):
 	elif state==3:
 
 
-		cx,cy=wd-20-30+15,10+15
+		cx,cy=wd-5-30+15,5+15
 
 		r=math.sqrt((cx-e.x)**2+(cy-e.y)**2)
 
@@ -610,7 +623,7 @@ def b1(e):
 
 
 
-		cx,cy=wd-20-30+15,10+15
+		cx,cy=wd-5-30+15,5+15
 
 		r=math.sqrt((cx-e.x)**2+(cy-e.y)**2)
 
@@ -626,6 +639,9 @@ def b1(e):
 			combo1.place_forget()
 			combo2.place_forget()			
 			combo3.place_forget()
+
+			ar_var2=[]
+			ar_var3=[]
 
 			sel_testament()
 
@@ -697,7 +713,7 @@ def b1(e):
 
 
 
-		cx,cy=wd-20-30+15,10+15
+		cx,cy=wd-5-30+15,5+15
 
 		r=math.sqrt((cx-e.x)**2+(cy-e.y)**2)
 
@@ -723,7 +739,7 @@ def view_highlights():
 	highlights=[]
 
 
-	can.create_image(wd-20-30,10,image=back,anchor="nw")
+	can.create_image(wd-5-30,5,image=back,anchor="nw")
 
 	can.create_text(wd/2,45/2,text="Highlights",font=("FreeMono",15))
 
@@ -793,10 +809,10 @@ def view_highlights():
 
 
 
-	can2["scrollregion"]=(0,0, wd-20-7,y)
+	can2["scrollregion"]=(0,0, wd-7,y)
 
 
-	frame.place(in_=root,x=10,y=45)
+	frame.place(in_=root,x=0,y=45)
 
 
 
@@ -883,7 +899,7 @@ def main(book_,chapter_,verse_):
 
 
 
-	can.create_image(wd-20-30,10,image=back,anchor="nw")
+	can.create_image(wd-5-30,5,image=back,anchor="nw")
 
 
 	x=wd/3
@@ -949,7 +965,7 @@ def main(book_,chapter_,verse_):
 
 
 
-		yv=wrap_text(can2, ar[_], 10, y, wd-20-7-20,col,1)
+		yv=wrap_text(can2, ar[_], 10, y, wd-7-20,col,1)
 
 		view[_].append([5,y-10, wd-5,yv+30])
 
@@ -963,7 +979,7 @@ def main(book_,chapter_,verse_):
 				
 				#can2.create_rectangle(5,y-10, wd-5,yv+30,fill="#000000")
 
-		yy=wrap_text(can2, ar[_], 10, y, wd-20-7-20,col,0)
+		yy=wrap_text(can2, ar[_], 10, y, wd-7-20,col,0)
 
 		
 
@@ -975,10 +991,10 @@ def main(book_,chapter_,verse_):
 
 
 
-	can2["scrollregion"]=(0,0, wd-20-7,y)
+	can2["scrollregion"]=(0,0, wd-7,y)
 
 
-	frame.place(in_=root,x=10,y=45)
+	frame.place(in_=root,x=0,y=45)
 
 
 
@@ -1165,7 +1181,7 @@ def sel_testament():
 
 	can.delete("all")
 
-	can.create_image(wd-20-30,10,image=back,anchor="nw")
+	can.create_image(wd-5-30,5,image=back,anchor="nw")
 
 
 
@@ -1420,7 +1436,7 @@ style.layout("My.Vertical.TScrollbar",
       'sticky': 'ns'})])
 
 
-style.configure("My.Vertical.TScrollbar", gripcount=0, background="#666666",
+style.configure("My.Vertical.TScrollbar", gripcount=0, background="#000000",
                 troughcolor='#ffffff', borderwidth=0, bordercolor='#ffffff',
                 lightcolor='#ffffff',relief="flat", darkcolor='#ffffff',
                 arrowsize=7)
@@ -1449,9 +1465,9 @@ def _on_mousewheel(e):
 
 
 
-frame=tk.Frame(bg="#ffffff",width=wd-20,height=ht-90)
+frame=tk.Frame(bg="#ffffff",width=wd,height=ht-90)
 
-can2=tk.Canvas(frame,bg="#ffffff",width=wd-20-7,height=ht-90,relief="flat",highlightthickness=0,border=0,
+can2=tk.Canvas(frame,bg="#ffffff",width=wd-7,height=ht-90,relief="flat",highlightthickness=0,border=0,
 	scrollregion=(0,0,wd-20-7,ht-90))
 can2.pack(side=tk.LEFT)
 can2.bind_all("<MouseWheel>",_on_mousewheel)
